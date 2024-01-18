@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="anime.MainPage"
+             BackgroundColor="#fff">
+
+
+    <Button Text="View Anime List" Clicked="ViewAnimeList_Clicked" 
+            TextColor="#ffbbd1" BackgroundColor="#Afffff"
+            WidthRequest="200" HeightRequest="50" 
+            FontAttributes="Bold" FontSize="15"/>
+</ContentPage>

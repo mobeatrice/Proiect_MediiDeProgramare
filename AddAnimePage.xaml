@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:anime"
+             x:Class="anime.AddAnimePage"
+             BackgroundColor="#fff">
+
+    <StackLayout>
+        <Entry Placeholder="Title" x:Name="TitleEntry" />
+        <Entry Placeholder="Genre" x:Name="GenreEntry" />
+        <Entry Placeholder="Character" x:Name="CharacterEntry" />
+        <Button Text="Add Anime" Clicked="AddAnime_Clicked" 
+                TextColor="#ffbbd1" BackgroundColor="#Afffff"
+                WidthRequest="200" HeightRequest="50" 
+                FontAttributes="Bold" FontSize="15"/>
+    </StackLayout>
+
+</ContentPage>

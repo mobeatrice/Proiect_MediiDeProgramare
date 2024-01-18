@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffb6c1</color>
+    <color name="colorPrimaryDark">#ffbbd1</color>
+    <color name="colorAccent">#ffb8d1</color>
+
+	<style name="MyTheme" parent="MainTheme">
+		<!-- Customize the navigation bar background color -->
+		<item name="android:navigationBarColor">#000000</item>
+		<!-- Replace #CCCCCC with your desired gray color -->
+	</style>
+	
+</resources>
