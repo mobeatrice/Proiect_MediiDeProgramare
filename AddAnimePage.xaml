@@ -5,14 +5,60 @@
              x:Class="anime.AddAnimePage"
              BackgroundColor="#fff">
 
-    <StackLayout>
-        <Entry Placeholder="Title" x:Name="TitleEntry" />
-        <Entry Placeholder="Genre" x:Name="GenreEntry" />
-        <Entry Placeholder="Character" x:Name="CharacterEntry" />
-        <Button Text="Add Anime" Clicked="AddAnime_Clicked" 
-                TextColor="#ffbbd1" BackgroundColor="#Afffff"
-                WidthRequest="200" HeightRequest="50" 
-                FontAttributes="Bold" FontSize="15"/>
+    
+    <StackLayout Margin="20" Spacing="10">
+        <Editor Placeholder="Enter the title of the anime"
+            Text="{Binding Title}"
+            HeightRequest="50" />
+        <Editor Placeholder="Enter the image of the anime"
+            Text="{Binding image}"
+            HeightRequest="50" />
+        <Editor Placeholder="Enter the description of the anime"
+            Text="{Binding Description}"
+            HeightRequest="50" />
+        
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button Text="Save"
+            Clicked="OnSaveButtonClicked" TextColor="#ffbbd1" BackgroundColor="#Afffff" WidthRequest="170" HeightRequest="40"/>
+            <Button Grid.Column="1"
+                Text="Delete"
+                Clicked="OnDeleteButtonClicked" TextColor="#ffbbd1" BackgroundColor="#Afffff" WidthRequest="170" HeightRequest="40"/>
+        </Grid>
+
+            <StackLayout Margin="20" Spacing="10">
+                <Label  FontSize="17" FontAttributes="Bold" Text="Genre:" 
+                 HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+
+        <ListView x:Name="listView" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Detail="{Binding Name}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <StackLayout Margin="20" Spacing="10">
+                <Label  FontSize="17" FontAttributes="Bold" Text="Characters:" 
+                HorizontalOptions="CenterAndExpand" />
+            </StackLayout>
+
+        <ListView x:Name="CharacterlistView" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Detail="{Binding Name}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+       
+        <Button Text="Add/Choose genre to add" 
+                TextColor="#ffbbd1" BackgroundColor="#Afffff" WidthRequest="200" HeightRequest="40"
+                Clicked="OnChooseButtonClicked"/>                <Button Text="Add/Choose character to add" 
+        TextColor="#ffbbd1" BackgroundColor="#Afffff" WidthRequest="200" HeightRequest="40"
+        Clicked="OnChooseButtonClickedCharacter"/>
     </StackLayout>
 
 </ContentPage>

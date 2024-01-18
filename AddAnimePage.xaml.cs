@@ -1,48 +1,56 @@
 using System;
-using anime.Data; // Import the correct namespace for AnimeDbContext
+using anime.Data; 
 using anime.Model;
-using Microsoft.Maui.Controls;
 
 namespace anime
 {
     public partial class AddAnimePage : ContentPage
     {
-        private AnimeDbContext _dbContext;
-
-        public AddAnimePage(AnimeDbContext dbContext)
+        public AddAnimePage()
         {
             InitializeComponent();
-            _dbContext = dbContext;
         }
-
-        private async void AddAnime_Clicked(object sender, EventArgs e)
+        async void OnSaveButtonClicked(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(TitleEntry.Text) && !string.IsNullOrWhiteSpace(GenreEntry.Text) && !string.IsNullOrWhiteSpace(CharacterEntry.Text))
-            {
-              
-                var newAnime = new Anime
-                {
-                    Title = TitleEntry.Text,
-                    
-                    GenreId = 1, 
-                    CharacterId = 1
-                };
-
-               
-                _dbContext.Database.Insert(newAnime);
-
-                
-                TitleEntry.Text = string.Empty;
-                GenreEntry.Text = string.Empty;
-                CharacterEntry.Text = string.Empty;
-                await Navigation.PopToRootAsync();
-            }
-            else
-            {
-                DisplayAlert("Error", "Please fill in all fields.", "OK");
-            }
+            var slist = (Anime)BindingContext;
+            await App.Database.SaveAnimeAsync(slist);
+            await Navigation.PopAsync();
+        }
+        async void OnDeleteButtonClicked(object sender, EventArgs e)
+        {
+            var slist = (Anime)BindingContext;
+            await App.Database.DeleteAnimeAsync(slist);
+            await Navigation.PopAsync();
         }
 
 
+        async void OnChooseButtonClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new GenrePage((Anime)
+           this.BindingContext)
+            {
+                BindingContext = new Genre()
+            });
+
+        }
+        async void OnChooseButtonClickedCharacter(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CharacterPage((Anime)
+           this.BindingContext)
+            {
+                BindingContext = new Character()
+            });
+
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            var ani = (Anime)BindingContext;
+
+            listView.ItemsSource = await App.Database.GetListGenreAsync(ani.Id);
+            CharacterlistView.ItemsSource = await App.Database.GetListCharacterAsync(ani.Id);
+        }
+        
     }
 }

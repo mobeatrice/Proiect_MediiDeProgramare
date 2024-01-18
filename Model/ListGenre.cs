@@ -3,12 +3,12 @@ using SQLiteNetExtensions.Attributes;
 
 namespace anime.Model
 {
-    public class Character
+    public class ListGenre
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string Name { get; set; }
-        [OneToMany]
-        public List<ListCharacter> ListCharacters { get; set; }
+        [ForeignKey(typeof(Anime))]
+        public int AnimeId { get; set; }
+        public int GenreId { get; set; }
     }
 }

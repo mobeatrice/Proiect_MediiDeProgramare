@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="anime.List"
+             Title="List">
+    <StackLayout Margin="20" Spacing="10">
+
+        <Label   TextColor="#ffbbd1" FontSize="30" FontAttributes="Bold" Text="{Binding Title}" 
+                HorizontalOptions="CenterAndExpand" />
+        <Image Source="{Binding image}"
+                HeightRequest="150"
+                VerticalOptions="Center" />
+        <Label  FontSize="15"  Text="{Binding Description}" 
+                HorizontalOptions="CenterAndExpand" />
+
+
+
+        <StackLayout Margin="20" Spacing="10">
+            <Label  FontSize="17" FontAttributes="Bold" Text="Genre:" 
+             HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <ListView x:Name="listView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Detail="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackLayout Margin="20" Spacing="10">
+            <Label  FontSize="17" FontAttributes="Bold" Text="Characters:" 
+            HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+
+        <ListView x:Name="CharacterlistView">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Detail="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="anime.AboutPage"
+             Title="AboutPage">
+    <VerticalStackLayout Spacing="10" Margin="10">
+        <HorizontalStackLayout Spacing="10">
+            <Image Source="diary.png"
+                    SemanticProperties.Description="My Anime List"
+                    HeightRequest="100" />
+            <Label FontSize="29" FontAttributes="Bold" Text="My Anime Lists" VerticalOptions="End"  TextColor="#ffbbd1"/>
+            <Label FontSize="15" Text="v1.0" VerticalOptions="End" />
+            
+        </HorizontalStackLayout>
+
+        <Label FontSize="20" Text="This app will help you to manage your anime lists." />
+        <Image Source="anime2.png"
+            SemanticProperties.Description="My Anime List"
+            HeightRequest="550" />
+    </VerticalStackLayout>
+</ContentPage>

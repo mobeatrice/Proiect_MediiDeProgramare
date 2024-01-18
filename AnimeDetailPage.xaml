@@ -6,6 +6,6 @@
    
     <StackLayout>
         <Label Text="{Binding Title}" FontSize="24" />
-        <Button Text="Delete Anime" Clicked="DeleteAnime_Clicked" />
+        <Button Text="Delete Anime"  />
     </StackLayout>
 </ContentPage>

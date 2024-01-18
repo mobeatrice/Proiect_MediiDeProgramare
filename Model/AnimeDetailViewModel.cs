@@ -23,7 +23,21 @@ namespace anime.Model
             }
         }
 
-       
+        private int animeId;
+        public int ID
+        {
+            get { return animeId; }
+            set
+            {
+                if (animeId != value)
+                {
+                    animeId = value;
+                    OnPropertyChanged(nameof(animeId));
+                }
+            }
+        }
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

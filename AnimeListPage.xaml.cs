@@ -5,46 +5,35 @@ namespace anime
 {
     public partial class AnimeListPage : ContentPage
     {
-        private AnimeDbContext _dbContext;
-
-        [Obsolete]
         public AnimeListPage()
         {
             InitializeComponent();
-            _dbContext = new AnimeDbContext(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "anime.db"));
-            RefreshAnimeList();
-            NavigationPage.SetTitleView(this, new Label { Text = "Back", TextColor = Color.FromHex("#FF69B4") }); 
         }
 
-        private void RefreshAnimeList()
-        {
-            var animeList = _dbContext.AnimesTable.ToList();
-            AnimeListView.ItemsSource = animeList;
-        }
+        
 
-        private async void AddAnime_Clicked(object sender, EventArgs e)
+        protected override async void OnAppearing()
         {
-            await Navigation.PushAsync(new AddAnimePage(_dbContext));
+            base.OnAppearing();
+            AnimeListView.ItemsSource = await App.Database.GetAnimeAsync();
         }
-
-        private async void AnimeListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        async void OnAnimeAddedClicked(object sender, EventArgs e)
         {
-            if (e.SelectedItem is Anime selectedAnime)
+            await Navigation.PushAsync(new AddAnimePage
             {
-                AnimeDetailViewModel viewModel = new AnimeDetailViewModel
+                BindingContext = new Anime()
+            });
+        }
+        async void OnListViewItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                await Navigation.PushAsync(new AddAnimePage
                 {
-                    Title = selectedAnime.Title,
-                };
-
-                AnimeDetailPage animeDetailPage = new AnimeDetailPage
-                {
-                    BindingContext = viewModel
-                };
-
-                await Navigation.PushAsync(animeDetailPage);
+                    BindingContext = e.SelectedItem as Anime
+                });
             }
         }
-
 
 
 

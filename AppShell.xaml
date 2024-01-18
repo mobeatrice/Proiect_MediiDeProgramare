@@ -16,12 +16,26 @@
                 TextColor="White"
                 FontSize="24"
                 VerticalOptions="CenterAndExpand"
-                AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" />
-        </AbsoluteLayout>
-    </Shell.TitleView>
+                AbsoluteLayout.LayoutBounds="0.5,0.5,-1,-1" 
+                />
 
-    <ShellContent
-        Title=""
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        </AbsoluteLayout>
+        
+    </Shell.TitleView>
+    <TabBar>
+        <ShellContent
+             Title="Home"
+             ContentTemplate="{DataTemplate local:MainPage}"
+             Route="MainPage" />
+        
+        <ShellContent
+             Title="My List"
+            ContentTemplate="{DataTemplate local:MyLists}"
+        />
+
+        <ShellContent
+            Title="About"
+            ContentTemplate="{DataTemplate local:AboutPage}"
+        />
+    </TabBar>
 </Shell>

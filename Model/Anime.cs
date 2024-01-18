@@ -15,7 +15,9 @@ namespace anime.Model
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Title { get; set; }
+        [MaxLength(250), Unique]
         public string Description {  get; set; }
+        public string image { get; set; }
         public int GenreId { get; set; }
         public int CharacterId { get; set; }
     }

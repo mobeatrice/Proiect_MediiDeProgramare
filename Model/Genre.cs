@@ -1,9 +1,5 @@
 ﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using SQLiteNetExtensions.Attributes;
 
 namespace anime.Model
 {
@@ -12,5 +8,7 @@ namespace anime.Model
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string Name { get; set; }
+        [OneToMany]
+        public List<ListGenre> ListGenres { get; set; }
     }
 }
